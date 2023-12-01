@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Administration 2FA</title>
+
+        <input-field>
+            <name>administrationCompany</name>
+            <label>2FA name</label>
+            <label lang="de-DE">2FA Name</label>
+            <helpText>Name for the QR code in 2FA app</helpText>
+            <helpText lang="de-DE">Name für den QR Code in der 2FA App</helpText>
+            <defaultValue>Shopware Administration</defaultValue>
+        </input-field>
+    </card>
+</config>

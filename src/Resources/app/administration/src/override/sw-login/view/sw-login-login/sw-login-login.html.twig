@@ -1,0 +1,91 @@
+{% block sw_login_login %}
+
+    <div v-if="!showOtpForm">
+        <form
+            class="sw-login-login"
+            @submit.prevent="loginUserWithPassword"
+        >
+            {% block sw_login_login_form_headline %}
+                <h2 class="sw-login__content-headline">
+                    {{ $tc('sw-login.index.headlineForm') }}
+                </h2>
+            {% endblock %}
+
+            {% block sw_login_login_alert %}
+{#                <sw-alert#}
+{#                        v-if="showLoginAlert"#}
+{#                        variant="info"#}
+{#                        appearance="default"#}
+{#                        :show-icon="true"#}
+{#                        :closable="false"#}
+{#                >#}
+{#                    {{ loginAlertMessage }}#}
+{#                </sw-alert>#}
+            {% endblock %}
+
+            {% block sw_login_login_user_field %}
+                <sw-text-field
+                        v-model="username"
+                        v-autofocus
+                        :label="$tc('sw-login.index.labelUsername')"
+                        :placeholder="$tc('sw-login.index.placeholderUsername')"
+                        :disabled="showLoginAlert"
+                        required
+                />
+            {% endblock %}
+
+            {% block sw_login_login_password_field %}
+                <sw-password-field
+                        v-model="password"
+                        :label="$tc('sw-login.index.labelPassword')"
+                        :placeholder="$tc('sw-login.index.placeholderPassword')"
+                        :disabled="showLoginAlert"
+                        required
+                />
+            {% endblock %}
+
+            {% block sw_login_login_submit %}
+                <div class="sw-login__submit">
+                    {% block sw_login_login_forgot_password %}
+                        <router-link
+                                :to="{ name: 'sw.login.index.recovery' }"
+                                class="sw-login__forgot-password-action"
+                        >
+                            {{ $tc('sw-login.index.forgottenPasswordLink') }}
+                        </router-link>
+                    {% endblock %}
+
+                    {% block sw_login_login_submit_button %}
+                        <sw-button
+                                :disabled="password.length <= 0 || username.length <= 0 || showLoginAlert"
+                                class="sw-login__login-action"
+                                variant="primary"
+                        >
+                            {{ $tc('sw-login.index.buttonLogin') }}
+                        </sw-button>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        </form>
+    </div>
+    <div v-else>
+        <form class="sw-login-login sw-login-login-otp" @submit.prevent="loginUserWithPasswordAndOtp">
+            <h2 class="sw-login__content-headline">{{ $tc('sw-login.index.headlineForm') }}</h2>
+
+            <sw-text-field
+                v-autofocus
+                v-model="otp"
+                :label="$tc('kind2-2fa.sw-login.index.labelOtp')"
+                required>
+            </sw-text-field>
+
+            <div class="sw-login__submit">
+                <sw-button :disabled="otp.length != 6 || password.length <= 0 || username.length <= 0"
+                           class="sw-login__login-action"
+                           variant="primary">
+                    {{ $tc('sw-login.index.buttonLogin') }}
+                </sw-button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

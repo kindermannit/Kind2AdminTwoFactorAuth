@@ -1,0 +1,44 @@
+{
+    "name": "kind2/admintwofactorauth",
+    "description": "KINDERMANN.IO: Zwei-Faktor-Authentifizierung Admin Login ",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.3",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "KINDERMANN.IO UG",
+            "email": "support@kindermann.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Kind2AdminTwoFactorAuth\\": "src/"
+        }
+    },
+    "require": {
+        "shopware/core": "^6.4",
+        "pragmarx/google2fa": "^8.0",
+        "bacon/bacon-qr-code": "^2.0"
+    },
+    "extra": {
+        "shopware-plugin-class": "Kind2AdminTwoFactorAuth\\Kind2AdminTwoFactorAuth",
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "copyright": "(c) by KINDERMANN.IO UG",
+        "label": {
+            "de-DE": "KINDERMANN.IO: Zwei-Faktor-Authentifizierung Admin Login",
+            "en-GB": "KINDERMANN.IO: Two-factor-Authentication Admin Login"
+        },
+        "description": {
+            "de-DE": "Dieses Plugin aktiviert eine Zwei-Faktor-Authentifizierung für Ihren Admin Bereich",
+            "en-GB": "This plugin will activate a two-factor-authentication for your admin area"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://kindermann.io",
+            "en-GB": "https://kindermann.io"
+        },
+        "supportLink": {
+            "de-DE": "https://kindermann.io/kontakt/",
+            "en-GB": "https://kindermann.io/kontakt/"
+        }
+    }
+}
